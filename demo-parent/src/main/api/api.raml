@@ -1,0 +1,32 @@
+#%RAML 0.8
+baseUri: https://mocksvc.mulesoft.com/mocks/a7633ba3-ed44-4545-a6c2-53ad170fc30a
+title: ParentDetail-tw
+version: 1.0
+
+/parents:
+  get:
+    responses: 
+      200:
+        body: 
+          application/json:
+            example: |
+              [{"id":"001","firstName":"Tharanga", "lastName":"Wijeweera","mobleNumber":"0772481861","address": {"address1":"1st cross street, pagoda","city":"nugegoda","postalCode":"10250"},"childrens": [{"name":"Dahamyuth Wijweera", "birthday":"2016/03/04", "gender":"boy"}]},{"id":"002","firstName":"Uditha","lastName":"Kumara","mobleNumber":"0772481862","address": {"address1":"23, piliyandala rd.","city":"piliyandala","postalCode":"10200"},"childrens": [{"name":"senul", "birthday":"2016/08/07", "gender":"boy"}]}]
+  post:
+    body: 
+      application/json:
+        example: |
+          {"id":"003","firstName":"Uditha","lastName":"Kumara","mobleNumber":"0772481864","address": {"address1":"23, piliyandala rd.","city":"kohuwala","postalCode":"40125"},"childrens": [{"name":"senul", "birthday":"2016/08/07", "gender":"boy"}]}
+    responses: 
+      202:
+        body: 
+          application/json:
+            example: |
+              {"message":"parent added successfully. (not real)"}
+  /{parentID}:
+    get:
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                {"id":"002", "firstName":"Uditha", "lastName":"Kumara", "mobleNumber":"0772481862", "address": {"address1":"23, piliyandala rd.", "city":"piliyandala", "postalCode":"10200"},"childrens": [{"name":"senul", "birthday":"2016/08/07", "gender":"boy"}]}
